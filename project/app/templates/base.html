@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <title>{% block titel %}dashboard{% endblock %}</title>
+    {% block css %}
+    {% endblock %}
+    
+</head>
+<body>
+      <nav class="navbar navbar-light"  style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+          <h1 class="navbar-brand" >Welcome To Admin Dashboard</h1>
+        </div>
+      </nav>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <ul>
+            <li>🏠 Dashboard</li>
+            <li><a href="{% url 'adduser' %}"> <i class="bi bi-person-plus" style="color: green; font-size: 1.2rem; transition: color 0.3s;"></i>Add User</a></li>
+            <li><a href="{% url 'displayuser'%}">👥 display Users</a></li>
+            <li><a href="{% url 'edituser' %}"><i class="bi bi-pencil-square" style="color: blue;"></i>&nbsp;Edit user</a></li>
+
+            <li> <a href="{% url 'delete'   %}"><i class="bi bi-trash" style="color: red; font-size: 1.5em; transition: color 0.3s;"></i> Delete</a></li>
+           
+            <li>📧 Messages</li>
+            <li>📅 Calendar</li>
+            <li>🔒 Logout</li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        {% block content %}
+        {% endblock %}
+      </div>
+
+</body>
+</html>

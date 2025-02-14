@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}admindashboard{% endblock %}
+{% block head %} <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">{% endblock %}
+{% block content%}
+ <div>
+    {{msg}}
+    {{msg2}}
+    
+        <form action="{% url 'adduser' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="name">Employe Name:</label>
+        <input type="text" name="name">
+        <br><br>
+        <label for="email">Employe Email</label>
+        <input type="email" placeholder="example@gmail.com" required name="email">
+        <br><br>
+        <label for="joining">Date Of Joining</label>
+        <input type="date" required name="joining">
+        <br><br>
+        <label for="dob">Date Of birth</label>
+        <input type="date" required name="dob">
+        <br><br>
+        
+        <label for="contact">Mobile Number</label>
+        <input type="number" required name="contact">
+        <br><br>
+        <label for="department">Department</label>
+        <input type="text" name="department" required>
+        <br><br>
+        <label for="passw1">Enter Password</label>
+        <input type="text"   name="passw1" required>
+        <br><br>
+        <label for="passw2">Confi rm Password</label>
+        <input type="text"   name="passw2" required>
+        <br><br>
+        <label for="work">your work</label>
+        <input type="text"   name="work" required>
+
+        <button type="submit">sumbit</button>
+        
+     </form>
+
+      </div>
+{% endblock %}

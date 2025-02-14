@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}admindashboard{% endblock %}
+{% block head %} <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">{% endblock %}
+{% block content%}
+ <h1>this is display user</h1>
+ 
+ <table border="2">
+    <tr>
+        <th>S.no</th>
+        <th>name</th>
+        <th>email</th>
+        <th>contact</th>
+        
+        <th>department</th>
+        <th>date of joining</th>
+        <th>date of birth</th>
+        <th>Your task</th>
+        
+
+
+    </tr>
+ {% for i in data%}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.employe_name }}</td>
+        <td>{{i.employe_email }}</td>
+        <td>{{i.contact_number}}</td>
+        <td>{{i.department }}</td>
+        <td>{{i.date_of_joining }}</td>
+        <td>{{i.employe_dob}}</td>
+        <td>{{i.your_work}}</td>
+        
+        
+    </tr>
+    {% endfor %}
+ </table>
+
+ 
+{% endblock %}
