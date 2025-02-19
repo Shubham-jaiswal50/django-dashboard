@@ -1,58 +1,58 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}admindashboard{% endblock %}
-{% block head %} <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">{% endblock %}
-{% block content%}
-  <table border="2">
-    <tr>
-        <th>S.no</th>
-        <th>name</th>
-        <th>email</th>
-        <th>contact</th>
-        
-        <th>department</th>
-        <!-- <th>date of joining</th>
-        <th>date of birth</th> -->
-        <th>Your task</th>
-        <th>Edit</th>
+{% block title %}Admin Dashboard{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/edit.css' %}">
+{% endblock %}
+{% block content %}
 
+<div class="table-container">
+    <h1>Employee Records</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Department</th>
+                <th>Your Task</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data2 %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.employe_name }}</td>
+                <td>{{ i.employe_email }}</td>
+                <td>{{ i.contact_number }}</td>
+                <td>{{ i.department }}</td>
+                <td>{{ i.your_work }}</td>
+                <td>
+                    <a href="{% url 'update' pk=i.id %}">
+                        <i class="bi bi-pencil-square edit-icon"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-    </tr>
- {% for i in data2 %}
-    <tr>
-        <td>{{forloop.counter}}</td>
-        <td>{{i.employe_name }}</td>
-        <td>{{i.employe_email }}</td>
-        <td>{{i.contact_number}}</td>
-        <td>{{i.department }}</td>
-        <!-- <td>{{i.date_of_joining }}</td>
-        <td>{{i.employe_dob}}</td> -->
-        <td>{{i.your_work}}</td>
-        <td><a href="{% url 'update'  pk=i.id  %}"><i class="bi bi-pencil-square" style="color: blue;"></i></a></td>
-        
-    </tr>
-    {% endfor %}
- </table>
-
- {% if data4 %}
- <h3>update table</h3>
- <form action="{% url 'updatedata' pk=data4.id  %}"  method="post" enctype="multipart/form-data">
-   {% csrf_token %}
- <input type="text" name="name" value="{{data4.employe_name}}"><br>
- <input type="email" name="email" value="{{data4.employe_email}}"><br>
- <!-- <input type="date" name="dob" value="{{data4.employe_dob}}"><br>
- <input type="date" name="doj" value="{{data4.date_of_joining}}"><br> -->
- <input type="text" name="dep" value="{{data4.department}}"><br>
- <input type="number" name="contact" value="{{data4.contact_number}}"><br>
- <input type="text" name="work" value="{{data4.your_work }}"><br>
- 
- <input type="submit" value="update">
- </form> 
- {% endif %}
- 
-
-
-
-
+{% if data4 %}
+<div class="update-form">
+    <h3>Update Employee Details</h3>
+    <form action="{% url 'updatedata' pk=data4.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" value="{{data4.employe_name}}" placeholder="Enter Name">
+        <input type="email" name="email" value="{{data4.employe_email}}" placeholder="Enter Email">
+        <input type="text" name="dep" value="{{data4.department}}" placeholder="Enter Department">
+        <input type="number" name="contact" value="{{data4.contact_number}}" placeholder="Enter Contact Number">
+        <input type="text" name="work" value="{{data4.your_work}}" placeholder="Enter Work">
+        <button type="submit">Update</button>
+    </form>
+</div>
+{% endif %}
 
 {% endblock %}

@@ -1,0 +1,110 @@
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a192f;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* Table Container */
+.table-container {
+    width: 900px;
+    
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow-x: auto;
+}
+
+/* Table */
+table {
+    width: auto;
+    border-collapse: collapse;
+    background: #f9f9f9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 10px;
+}
+
+thead {
+    background: #112d4e;
+    color: white;
+    font-size: 1.1rem;
+}
+
+th, td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    color: #112d4e;
+}
+
+/* Alternate Row Colors */
+tbody tr:nth-child(odd) {
+    background: #e3e3e3;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background: #3f72af;
+    color: white;
+    transition: 0.3s ease-in-out;
+}
+
+/* Edit Icon */
+.edit-icon {
+    color: #fca311;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+}
+
+.edit-icon:hover {
+    color: #ffbe0b;
+    transform: scale(1.2);
+}
+
+/* Update Form */
+.update-form {
+    width: 50%;
+    margin: 30px auto;
+    margin-left: 200px ;
+    padding: 25px;
+    background: #112d4e;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.update-form h3 {
+    margin-bottom: 20px;
+    color: #fca311;
+}
+
+.update-form input {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #3f72af;
+    background: #ffffff;
+    color: #112d4e;
+    outline: none;
+    font-size: 1rem;
+}
+
+.update-form input::placeholder {
+    color: #555;
+}
+
+.update-form button {
+    width: 50%;
+    padding: 12px;
+    background: #007
+}

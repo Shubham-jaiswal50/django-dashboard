@@ -1,40 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}admindashboard{% endblock %}
-{% block head %} <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">{% endblock %}
-{% block content%}
- <h1>this is display user</h1>
- 
- <table border="2">
-    <tr>
-        <th>S.no</th>
-        <th>name</th>
-        <th>email</th>
-        <th>contact</th>
-        
-        <th>department</th>
-        {% comment %} <th>date of joining</th>
-        <th>date of birth</th> {% endcomment %}
-        <th>Your task</th>
-        
-
-
-    </tr>
- {% for i in data%}
-    <tr>
-        <td>{{forloop.counter}}</td>
-        <td>{{i.employe_name }}</td>
-        <td>{{i.employe_email }}</td>
-        <td>{{i.contact_number}}</td>
-        <td>{{i.department }}</td>
-        {% comment %} <td>{{i.date_of_joining }}</td>
-        <td>{{i.employe_dob}}</td> {% endcomment %}
-        <td>{{i.your_work}}</td>
-        
-        
-    </tr>
-    {% endfor %}
- </table>
-
- 
+{% block title %}Admin Dashboard{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/display.css' %}">
+{% endblock %}
+{% block content %}
+<div class="table-container">
+    <h1>Employee List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Department</th>
+                <th>Your Task</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.employe_name }}</td>
+                <td>{{ i.employe_email }}</td>
+                <td>{{ i.contact_number }}</td>
+                <td>{{ i.department }}</td>
+                <td>{{ i.your_work }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
