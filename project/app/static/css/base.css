@@ -1,42 +1,259 @@
-.sidebar {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 200px;
-    height: calc(100% - 60px);
-    background-color: #2c3e50;
-    color: #ecf0f1;
-    padding-top: 20px;
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    background-size: contain;
+    color: white;
+    display: flex;
+    flex-direction: column;
 }
 
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    padding: 0 20px;
+    z-index: 1001;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #121212;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    left: 0;
+    top: 70px;
+    height: 100%;
+    z-index: 1000;
+    padding-top: 10px;
+}
+
+/* Sidebar 3D Effect */
 .sidebar ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
-.sidebar ul li  {
-    padding: 15px 20px;
-    cursor: pointer;
-    border-bottom: 1px solid #34495e;
-    transition: background-color 0.3s;
-    
-
+.sidebar ul li {
+    padding: 10px;
+    transition: 0.3s;
 }
-.sidebar ul li a{
+
+.sidebar ul li a {
     text-decoration: none;
     color: white;
-    font-weight: 700;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    padding: 10px;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+/* Hover Effect */
+.sidebar ul li:hover {
+    background: linear-gradient(to right, #ff6e7f, #bfe9ff);
+    transform: scale(1.1);
+    border-radius: 5px;
+}
+
+/* Hover Effect on Icons */
+.sidebar ul li:hover i {
+    transform: rotate(360deg);
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 380px;
+    padding: 20px;
+    width: calc(100% - 260px);
+    transition: margin-left 0.3s ease-in-out;
+    margin-top: 80px;
+}
+
+/* 📌 Responsive Sidebar & Navbar for Tablets & Mobile */
+@media screen and (max-width: 1024px) {
+    .main-content {
+        margin-left: 350px;
+        width: auto;
+        margin-top: 150px;
+       
+    }
+    
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.active {
+        left: 0;
+        width: 200px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+    .navbar h1 {
+        margin-top: 50px;
+        
+        
+    }
+}
+
+/* 📌 Mobile View (Tablets & Phones - Below 768px) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        font-size: 1.3rem;
+        height: 60px;
+        padding: 0 15px;
+    }
+
+    .sidebar {
+        left: -250px;
+        width: 250px;
+    }
+    body {
+       
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        background-size: cover;
+
+        
+    }
+    
+
+    .sidebar.active {
+        left: 0;
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: auto;
+        padding: 15px;
+        margin-top: 150px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar ul li a {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    .sidebar ul li a i {
+        font-size: 1.3rem;
+    }
+    body {
+       
+        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+        background-size: contain;
+
+        
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .navbar {
+        font-size: 1rem;
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .menu-toggle {
+        font-size: 1.5rem;
+    }
+
+    .sidebar {
+        width: 220px;
+        left: -220px;
+    }
+
+    .sidebar.active {
+        left: 0;
+        width: 220px;
+    }
+
+    .sidebar ul li a {
+        font-size: 0.85rem;
+        padding: 6px;
+    }
+
+    .sidebar ul li a i {
+        font-size: 1.1rem;
+    }
+
+    .main-content {
+        margin-top: 60px;
+        padding: 8px;
+    
+        
+    }
     
 }
 
-.sidebar ul li:hover {
-    background-color: #34495e;
-    color: white;
-}
+/* 📌 Ultra Small Screens (Below 375px) */
+@media screen and (max-width: 375px) {
+    .navbar {
+        font-size: 0.9rem;
+        height: 45px;
+    }
 
-.main-content {
-    margin-left: 200px;
-    margin-top: 60px;
-    padding: 20px;
+    .menu-toggle {
+        font-size: 1.3rem;
+    }
+
+    .sidebar {
+        width: 200px;
+        left: -200px;
+    }
+
+    .sidebar.active {
+        left: 0;
+        width: 200px;
+    }
+
+    .sidebar ul li a {
+        font-size: 0.8rem;
+        padding: 5px;
+    }
+
+    .sidebar ul li a i {
+        font-size: 1rem;
+    }
+
+    .main-content {
+        margin-top: 55px;
+        padding: 5px;
+    }
 }

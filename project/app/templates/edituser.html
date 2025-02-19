@@ -11,8 +11,8 @@
         <th>contact</th>
         
         <th>department</th>
-        <th>date of joining</th>
-        <th>date of birth</th>
+        <!-- <th>date of joining</th>
+        <th>date of birth</th> -->
         <th>Your task</th>
         <th>Edit</th>
 
@@ -25,13 +25,34 @@
         <td>{{i.employe_email }}</td>
         <td>{{i.contact_number}}</td>
         <td>{{i.department }}</td>
-        <td>{{i.date_of_joining }}</td>
-        <td>{{i.employe_dob}}</td>
+        <!-- <td>{{i.date_of_joining }}</td>
+        <td>{{i.employe_dob}}</td> -->
         <td>{{i.your_work}}</td>
-        <td><a href="{% url 'edituser' %}"><i class="bi bi-pencil-square" style="color: blue;"></i></a></td>
+        <td><a href="{% url 'update'  pk=i.id  %}"><i class="bi bi-pencil-square" style="color: blue;"></i></a></td>
         
     </tr>
     {% endfor %}
  </table>
+
+ {% if data4 %}
+ <h3>update table</h3>
+ <form action="{% url 'updatedata' pk=data4.id  %}"  method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+ <input type="text" name="name" value="{{data4.employe_name}}"><br>
+ <input type="email" name="email" value="{{data4.employe_email}}"><br>
+ <!-- <input type="date" name="dob" value="{{data4.employe_dob}}"><br>
+ <input type="date" name="doj" value="{{data4.date_of_joining}}"><br> -->
+ <input type="text" name="dep" value="{{data4.department}}"><br>
+ <input type="number" name="contact" value="{{data4.contact_number}}"><br>
+ <input type="text" name="work" value="{{data4.your_work }}"><br>
+ 
+ <input type="submit" value="update">
+ </form> 
+ {% endif %}
+ 
+
+
+
+
 
 {% endblock %}

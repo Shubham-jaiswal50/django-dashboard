@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Reset Your Password</h2>
+
+        {% if msg %}
+            <p class="success-msg">{{ msg }}</p>
+        {% endif %}
+
+        {% if msg2 %}
+            <p class="error-msg">{{ msg2 }}</p>
+        {% endif %}
+
+        {% if data %}
+        <form action="{% url 'reset' pk=data.id %}" method="post">
+            {% csrf_token %}
+            
+            <div class="input-group">
+                <label for="old">Enter Old Password:</label>
+                <input type="password" name="old" required>
+            </div>
+
+            <div class="input-group">
+                <label for="new">Enter New Password:</label>
+                <input type="password" name="new" required>
+            </div>
+
+            <button type="submit">Reset Password</button>
+        </form>
+        <a href="{% url 'back' pk=data.id %}" class="go-back">⬅ Go Back</a>
+        {% endif %}
+
+        
+    </div>
+
+</body>
+</html>

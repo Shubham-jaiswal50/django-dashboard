@@ -1,0 +1,9 @@
+
+{% extends "base2.html" %}
+{% load static %}
+{% block title %} dashboard{% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/userdashboard.css' %}">{% endblock %}
+{% block content%}
+ <h1>{{name}}</h1>
+ <h1>{{user_id}}</h1>
+{% endblock %}

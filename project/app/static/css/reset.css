@@ -1,0 +1,116 @@
+/* Reset and Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Centered Container */
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 350px;
+    animation: floatEffect 2s ease-in-out infinite alternate;
+}
+
+/* Form Heading */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Input Group Styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 3D Effect on Input Focus */
+input:focus {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-color: #764ba2;
+}
+
+/* Submit Button */
+button {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block;
+}
+
+/* 3D Effect on Button Hover */
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.5);
+}
+
+/* Success and Error Messages */
+.success-msg {
+    color: green;
+    font-weight: bold;
+}
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}
+
+/* Go Back Button Styling */
+.go-back {
+    display: block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* 3D Effect on Go Back Hover */
+.go-back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 120, 155, 0.5);
+}
+
+/* Floating Effect on Form */
+@keyframes floatEffect {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
