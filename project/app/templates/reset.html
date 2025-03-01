@@ -12,13 +12,14 @@
     <div class="container">
         <h2>Reset Your Password</h2>
 
-        {% if msg %}
-            <p class="success-msg">{{ msg }}</p>
-        {% endif %}
+        {% if messages %}
+    {% for message in messages %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+{% endif %}
 
-        {% if msg2 %}
-            <p class="error-msg">{{ msg2 }}</p>
-        {% endif %}
 
         {% if data %}
         <form action="{% url 'reset' pk=data.id %}" method="post">
@@ -35,9 +36,18 @@
             </div>
 
             <button type="submit">Reset Password</button>
+
         </form>
-        <a href="{% url 'back' pk=data.id %}" class="go-back">⬅ Go Back</a>
-        {% endif %}
+
+        
+        
+        
+        {%endif%}
+        <a href="javascript:history.back()" class="go-back">⬅ Go Back</a>
+
+
+        
+    
 
         
     </div>

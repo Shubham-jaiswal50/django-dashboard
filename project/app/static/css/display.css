@@ -1,102 +1,187 @@
-/* General Styles */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #2b5876, #4e4376);
-    color: white;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+  width: 60%;
+}
+.table-container {
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(5, 5, 5, 0.5);
+  overflow-x: auto;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+td {
+  text-align: center;
+  column-gap: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 10px;
+}
+th {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-family: sans-serif;
+  padding: auto;
+}
+td:hover {
+  background-color: cornflowerblue;
+  transition: 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
-}
-
-/* Table Container */
-.table-container {
-    width: 900px;
-   
+    background: #f4f4f4;
+    color: #333;
+    width: 100%;
+  }
+  .table-container {
+    max-width: 800px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
-    overflow-x: auto;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px rgba(5, 5, 5, 0.5);
+    overflow-x: hidden;
     text-align: center;
-}
+    margin: auto;
+    padding: 15px;
+  }
 
-/* Table */
-table {
-    width: auto;
+  table {
+    width: 100%;
     border-collapse: collapse;
-    overflow: hidden;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 10px;
-}
-
-thead {
-    background: linear-gradient(to right, #1f4037, #99f2c8);
-    color: white;
-    font-size: 1.2rem;
-}
-
-th, td {
-    padding: 12px 15px;
+    border-radius: 5px;
+  }
+  td {
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Hover Effect */
-tbody tr:hover {
-    background: rgba(255, 255, 255, 0.2);
+    column-gap: 5px;
+    font-size: 20px;
+    font-family: sans-serif;
+    padding: 10px;
+  }
+  th {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    font-family: sans-serif;
+    padding: auto;
+  }
+  td:hover {
+    background-color: cornflowerblue;
     transition: 0.3s ease-in-out;
+  }
+}
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
+  width: 60%;
 }
 
-/* Responsive Design */
-
-/* Tablets (768px - 1024px) */
-@media screen and (max-width: 1024px) {
-    .table-container {
-        width: 95%;
-    }
-
-    table {
-        font-size: 14px;
-    }
-
-    th, td {
-        padding: 10px;
-    }
+/* Table Container Styles */
+.table-container {
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(5, 5, 5, 0.5);
+  overflow-x: auto; /* Add horizontal scrolling if the table overflows */
+  text-align: center;
+  margin: auto;
+  padding: 10px;
 }
 
-/* Mobile (425px - 768px) */
+/* Table Styles */
+table {
+  width: 100%; /* Table takes up the full container width */
+  border-collapse: collapse;
+  border-radius: 5px;
+}
+
+td {
+  text-align: center;
+  column-gap: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+th {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+td:hover {
+  background-color: cornflowerblue;
+  transition: 0.3s ease-in-out;
+}
+
+/* Media Query for Screens max-width 768px */
 @media screen and (max-width: 768px) {
-    .table-container {
-        width: 100%;
-        padding: 10px;
-    }
+  body {
+    width: 100%;
+  }
 
-    table {
-        font-size: 13px;
-    }
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto; /* Ensure horizontal scrolling */
+  }
 
-    th, td {
-        padding: 8px;
-    }
+  table {
+    width: 100%;
+  }
+
+  td, th {
+    font-size: 18px; /* Slightly reduce font size */
+    padding: 8px; /* Adjust padding for smaller screens */
+  }
 }
 
-/* Small Mobile (375px - 425px) */
+/* Media Query for Mobile View max-width 425px */
 @media screen and (max-width: 425px) {
-    table {
-        font-size: 12px;
-    }
+  body {
+    width: 100%; /* Full width of the screen */
+  }
 
-    th, td {
-        padding: 6px;
-    }
-}
+  .table-container {
+    max-width: 100%; /* Full width of the screen */
+    padding: 15px;
+    overflow-x: auto; /* Allow horizontal scrolling if the table overflows */
+  }
 
-/* Extra Small Mobile (Below 375px) */
-@media screen and (max-width: 375px) {
-    table {
-        font-size: 11px;
-    }
+  table {
+    width: 100%; /* Table takes up 100% of container width */
+  }
 
-    th, td {
-        padding: 5px;
-    }
+  td, th {
+    font-size: 14px; /* Adjust font size for mobile */
+    padding: 8px; /* Adjust padding */
+  }
+
+  td:hover {
+    background-color: cornflowerblue;
+    transition: 0.3s ease-in-out;
+  }
 }

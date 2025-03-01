@@ -5,9 +5,113 @@
     <link rel="stylesheet" href="{% static 'css/delete.css' %}">
 {% endblock %}
 {% block content %}
+<style>
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0a192f;
+    color: white;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+}
 
+/* Table Container */
+.table-container {
+    max-width: 900px; /* Set a max-width to maintain layout */
+    width: 100%;
+    margin: 40px auto;
+    background: black;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden; 
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0; 
+}
+
+thead {
+    background: linear-gradient(to right,red, red);
+    color: white;
+    font-size: 1.2rem;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+
+tbody tr:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+
+
+
+@media screen and (max-width: 1024px) {
+    .table-container {
+        width: 95%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .table-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
+
+
+@media screen and (max-width: 425px) {
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}
+
+
+@media screen and (max-width: 375px) {
+    table {
+        font-size: 11px;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+}
+</style>
 <div class="table-container">
-    <h1>Employee Deletion Page</h1>
+    <h1>Employee List</h1>
     <table>
         <thead>
             <tr>
@@ -16,8 +120,8 @@
                 <th>Email</th>
                 <th>Contact</th>
                 <th>Department</th>
-                <th>Your Task</th>
                 <th>Delete</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -28,10 +132,8 @@
                 <td>{{ i.employe_email }}</td>
                 <td>{{ i.contact_number }}</td>
                 <td>{{ i.department }}</td>
-                <td>{{ i.your_work }}</td>
-                <td>
-                    <a href="{% url 'remove' pk=i.id %}" class="delete-btn">
-                        <i class="bi bi-trash"></i>
+               <td> <a href="{% url 'remove' pk=i.id %}" class="delete-btn">
+                         <i class="bi bi-trash" style="color: red;"></i>
                     </a>
                 </td>
             </tr>

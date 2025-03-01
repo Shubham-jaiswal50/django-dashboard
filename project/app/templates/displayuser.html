@@ -5,20 +5,20 @@
     <link rel="stylesheet" href="{% static 'css/display.css' %}">
 {% endblock %}
 {% block content %}
-<div class="table-container">
-    <h1>Employee List</h1>
-    <table>
-        <thead>
+  <div class="table-container">
+    <h1 style="color: black;">Employee List</h1>
+    <table border="2px solid black" >
+        
             <tr>
                 <th>S.No</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
                 <th>Department</th>
-                <th>Your Task</th>
+                
             </tr>
-        </thead>
-        <tbody>
+    
+        
             {% for i in data %}
             <tr>
                 <td>{{ forloop.counter }}</td>
@@ -26,10 +26,13 @@
                 <td>{{ i.employe_email }}</td>
                 <td>{{ i.contact_number }}</td>
                 <td>{{ i.department }}</td>
-                <td>{{ i.your_work }}</td>
+            
             </tr>
             {% endfor %}
-        </tbody>
+    
     </table>
 </div>
+
+
+
 {% endblock %}

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import AdminDatabase,EmpDatabase
+from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -81,7 +83,7 @@ def displayuser(request):
 def delete(request):
     
     myans=EmpDatabase.objects.all()
-    return render(request,'delete.html',{'data3':myans.values})
+    return render(request,'delete.html',{'data3':myans.values()})
 
 def remove(request,pk):
     data=EmpDatabase.objects.get(id=pk)
@@ -123,7 +125,7 @@ def logout2(request):
     return render(request,'index.html')
 
 def profile(request, pk):  
-    user = EmpDatabase.objects.filter(id=pk).first()  # Get the user by primary key  
+    user = EmpDatabase.objects.filter(id=pk).first()   # Get the user by primary key  
     print(user)  # Debugging to see if user exists
     
     if user:  
@@ -141,7 +143,24 @@ def profile(request, pk):
 
 
 
+# def reset(request, pk):
+#     print(pk)
+#     data = EmpDatabase.objects.get(id=pk)
+#     if request.method == "POST":
+#         oldpass = request.POST.get('old')
+#         newpass = request.POST.get('new')
+
+#         if data and data.employe_password == oldpass:
+#             data.employe_password = newpass
+#             data.save()
+#             return render(request, 'reset.html', {'data': data, 'msg': "Password reset successfully!"})
+#         else:
+#             return render(request, 'reset.html', {'data': data, 'msg2': "Old password does not match!"})
+
+#     return render(request, 'reset.html', {'data': data})
+
 def reset(request, pk):
+    print(pk)
     data = EmpDatabase.objects.get(id=pk)
 
     if request.method == "POST":
@@ -151,11 +170,19 @@ def reset(request, pk):
         if data and data.employe_password == oldpass:
             data.employe_password = newpass
             data.save()
-            return render(request, 'reset.html', {'data': data, 'msg': "Password reset successfully!"})
+            
+            # Show a success message
+            messages.success(request, "Password reset successfully!")
+            
+            # Redirect to the previous page
+            previous_url = request.META.get('HTTP_REFERER', reverse('index'))  # Default to 'index' if no referrer
+            return redirect(previous_url)
+
         else:
-            return render(request, 'reset.html', {'data': data, 'msg2': "Old password does not match!"})
+            messages.error(request, "Old password does not match!")
 
     return render(request, 'reset.html', {'data': data})
+
 
 
 
@@ -166,6 +193,7 @@ def task1(request):
 
 
 def changes(request, pk):
+    
     if request.method == "POST":
         oldpass = request.POST.get('old')
         newpass = request.POST.get('new')
@@ -181,6 +209,7 @@ def changes(request, pk):
     return render(request, 'reset.html', {'msg': "Incorrect old password"})
 
 def givetask(request,pk):
+    
     data=EmpDatabase.objects.get(id=pk)
     myans2=EmpDatabase.objects.all()
     if request.method == "POST":
@@ -198,9 +227,7 @@ def showtask(request,pk):
     mytask=task.your_work
     return render(request,'showtask.html',{'taskdata':task,'mytsk':mytask})
 
-def back(request,pk):
-    goback=EmpDatabase.objects.get(id=pk)
-    return render(request,'userdashboard.html',{'data':goback})
+
 
 
 

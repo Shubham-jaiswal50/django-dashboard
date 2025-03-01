@@ -1,45 +1,268 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}admindashboard{% endblock %}
-{% block head %} <link rel="stylesheet" href="{% static 'css/admindashboard.css' %}">{% endblock %}
-{% block content%}
- <div>
-    {{msg}}
-    {{msg2}}
+{% block title %}Add Employee{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/adduser.css' %}">
+{% endblock %}
+{% block content %}
+<style>
+    /* Add some basic reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 50% /* Use full width on smaller screens */
+}
+
+h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Form container styling */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px; /* Adjust padding for smaller screens */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent overflow */
+}
+
+/* Input fields styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"] {
+    width: 100%; /* Ensure input fields take full width */
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+    background-color: #fafafa;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Submit button styling */
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Success/Error messages styling */
+.message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        
+    }
+
+    .form-container {
+        padding: 20px;
+        margin: auto;
+        margin-left: 100px;
+        width: 500px;
+    }
+
+    h2 {
+        font-size: 20px; /* Adjust heading size for smaller screens */
+    }
+
+    .form-group label {
+        font-size: 20px; /* Adjust label size for smaller screens */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+        font-size: 14px; /* Adjust input size for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .submit-btn {
+        font-size: 14px; /* Adjust button size for smaller screens */
+        padding: 10px; /* Adjust button padding for smaller screens */
+    }
+
+    .message {
+        font-size: 14px; /* Adjust message size for smaller screens */
+    }
+}
+
+/* Extra small screens (Mobile) */
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px;
+        margin: auto;
+        margin-left: 50px;
+        width: 300px;
+        margin-top: 100px;
+    }
+
+    h2 {
+        font-size: 18px; /* Adjust heading size for extra small screens */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+        padding: 8px 10px; /* Adjust padding for extra small screens */
+        font-size: 12px; /* Adjust input size for extra small screens */
+    }
+
+    .submit-btn {
+        font-size: 12px; /* Adjust button size for extra small screens */
+        padding: 8px 10px; /* Adjust button padding for extra small screens */
+    }
+
+    .message {
+        font-size: 12px; /* Adjust message size for extra small screens */
+    }
+}
+
+/* Specific styling for 425px width (common for large smartphones) */
+@media (max-width: 425px) {
+    .form-container {
+        padding: 15px; /* Adjust padding for large smartphones */
+    }
+
+    h2 {
+        font-size: 20px; /* Slightly bigger font for better readability */
+    }
+
+    .form-group label {
+        font-size: 10px; /* Adjust label size for large smartphones */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="password"] {
+        font-size: 14px; /* Adjust input size for large smartphones */
+        padding: 10px; /* Adjust padding for large smartphones */
+    }
+
+    .submit-btn {
+        font-size: 14px; /* Adjust button size for large smartphones */
+        padding: 10px; /* Adjust button padding for large smartphones */
+    }
+
+    .message {
+        font-size: 14px; /* Adjust message size for large smartphones */
+    }
+}
+</style>
+
+<div class="form-container">
+    <h2 style="color: black; text-align: center;">Add Employee</h2>
     
-        <form action="{% url 'adduser' %}" method="post" enctype="multipart/form-data">
+    <!-- Success & Error Messages -->
+    {% if msg %}
+        <p class="message success">{{ msg }}</p>
+    {% endif %}
+    {% if msg2 %}
+        <p class="message error">{{ msg2 }}</p>
+    {% endif %}
+    
+    <!-- Employee Registration Form -->
+    <form action="{% url 'adduser' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <label for="name">Employe Name:</label>
-        <input type="text" name="name">
-        <br><br>
-        <label for="email">Employe Email</label>
-        <input type="email" placeholder="example@gmail.com" required name="email">
-        <br><br>
-        {% comment %} <label for="joining">Date Of Joining</label>
-        <input type="date" required name="joining">
-        <br><br>
-        <label for="dob">Date Of birth</label>
-        <input type="date" required name="dob">
-        <br><br> {% endcomment %}
-        
-        <label for="contact">Mobile Number</label>
-        <input type="number" required name="contact">
-        <br><br>
-        <label for="department">Department</label>
-        <input type="text" name="department" required>
-        <br><br>
-        <label for="passw1">Enter Password</label>
-        <input type="text"   name="passw1" required>
-        <br><br>
-        <label for="passw2">Confi rm Password</label>
-        <input type="text"   name="passw2" required>
-        <br><br>
-        <label for="work">your work</label>
-        <input type="text"   name="work" required>
 
-        <button type="submit">sumbit</button>
-        
-     </form>
+        <div class="form-group">
+            <label for="name">Employee Name:</label>
+            <input type="text" name="name" placeholder="Enter full name" required>
+        </div>
 
-      </div>
+        <div class="form-group">
+            <label for="email">Employee Email:</label>
+            <input type="email" name="email" placeholder="example@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Mobile Number:</label>
+            <input type="number" name="contact" placeholder="Enter mobile number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="department">Department:</label>
+            <input type="text" name="department" placeholder="e.g. IT, HR, Sales" required>
+        </div>
+
+        <div class="form-group">
+            <label for="passw1">Enter Password:</label>
+            <input type="password" name="passw1" placeholder="Create a password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="passw2">Confirm Password:</label>
+            <input type="password" name="passw2" placeholder="Confirm password" required>
+        </div>
+
+         
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
 {% endblock %}

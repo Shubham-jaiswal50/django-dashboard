@@ -22,7 +22,7 @@ urlpatterns = [
     path('givetask/<int:pk>',views.givetask,name='givetask'),
     path('reset/<int:pk>',views.reset, name='reset'),
     path('showtask/<int:pk>',views.showtask, name='showtask'),
-    path('back/<int:pk>',views.back, name='back'),
+    
 
 
    

@@ -20,7 +20,7 @@
     <div class="sidebar">
         <ul>
             <li><a href="#"><i class="bi bi-house-door"></i> Dashboard</a></li>
-            <li><a href="{% url 'profile' user_id %}"><i class="bi bi-person-circle"></i> Your Profile</a></li>
+            <li><a href="{% url 'profile' pk=user_id %}"><i class="bi bi-person-circle"></i> Your Profile</a></li>
             <li><a href="{% url 'showtask' pk=user_id %}"><i class="bi bi-list-task"></i> My Tasks</a></li>
             <li><a href="{% url 'reset' pk=user_id %}"><i class="bi bi-shield-lock"></i> Reset Password</a></li>
             <li><a href="{% url 'logout2' %}"><i class="bi bi-box-arrow-right"></i> Logout</a></li>

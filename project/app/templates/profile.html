@@ -1,22 +1,32 @@
 {% extends "base2.html" %}
 {% load static %}
-{% block title %}{{name}} profile{% endblock %}
-{% block css %} <link rel="stylesheet" href="{% static 'css/profile.css' %}">{% endblock %}
-{% block content%}
 
+{% block title %}
+    {{ name }}'s Profile
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
 <div class="profile-container">
-        <div class="profile-card">
-            <div class="profile-header">
-                <h2>Employee Profile</h2>
-            </div>
-            <div class="profile-details">
+    <div class="profile-card">
+        <div class="profile-header">
+            <h1>{{ name }}</h1>
+            <p class="profile-tagline " style="color: black;">Welcome to your profile</p>
+        </div>
+
+        <div class="profile-details">
+            <div class="profile-info">
                 <p><strong>Name:</strong> <span>{{ name }}</span></p>
                 <p><strong>Email:</strong> <span>{{ email }}</span></p>
                 <p><strong>Department:</strong> <span>{{ department }}</span></p>
                 <p><strong>Contact:</strong> <span>{{ contact }}</span></p>
-                <p><strong>Work Description:</strong> <span>{{ work }}</span></p>
             </div>
-            <button class="edit-btn">Edit Profile</button>
+
+            
         </div>
     </div>
+</div>
 {% endblock %}
